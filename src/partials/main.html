@@ -1,11 +1,11 @@
-<md-toolbar ng-show="main.hideToolbar !== true" id="toolbar">
+<md-toolbar ui-masonry ng-show="main.hideToolbar !== true" id="toolbar">
     <div class="md-toolbar-tools" id="nr-dashboard-toolbar">
-        <md-button ng-show="!(main.lockMenu != 'false') && main.len > 1" ng-click="main.toggleSidenav()" class="md-icon-button" aria-label="menu button">
+<!--        <md-button ng-show="!(main.lockMenu != 'false') && main.len > 1" ng-click="main.toggleSidenav()" class="md-icon-button" aria-label="menu button">
             <ng-md-icon icon="menu"></ng-md-icon>
         </md-button>
         <h1 ng-show="main.len <= 1" style="width:30px"> </h1>
         <h1 ng-show="main.lockMenu != 'false'" node-id="{{main.id}}">{{main.name}}</h1>
-        <h1 ng-show="!(main.lockMenu != 'false') && main.loaded" node-id="{{main.selectedTab.id}}">{{main.selectedTab.header || main.selectedTab.name}}</h1>
+        <h1 ng-show="!(main.lockMenu != 'false') && main.loaded" node-id="{{main.selectedTab.id}}">{{main.selectedTab.header || main.selectedTab.name}}</h1>-->
     </div>
 </md-toolbar>
 <section layout="row" flex>
@@ -30,3 +30,4 @@
     </md-content>
 </section>
 <div id="nr-dashboard-footer" layout="row"></div>
+
