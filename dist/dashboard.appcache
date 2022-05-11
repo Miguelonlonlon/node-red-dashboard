@@ -1,19 +1,17 @@
 CACHE MANIFEST
-# Time: Wed May 04 2022 18:21:44 GMT+0100 (British Summer Time)
+# Time: Wed May 11 2022 18:59:07 GMT+0200 (hora de verano de Europa central)
 
 CACHE:
 i18n.js
 icon120x120.png
 icon192x192.png
 icon64x64.png
-css/app.min.css
 css/app.min.less
 css/gridstack-extra.min.css
-js/app.min.js
+css/app.min.css
 js/tinycolor-min.js
 socket.io/socket.io.js
-fonts/MaterialIcons-Regular.woff
-fonts/MaterialIcons-Regular.woff2
+js/app.min.js
 fonts/fontawesome-webfont.woff
 fonts/fontawesome-webfont.woff2
 fonts/weather-icons-lite.woff
@@ -22,8 +20,10 @@ gs/gridstack.jQueryUI.min.js
 gs/gridstack.min.css
 gs/gridstack.min.js
 loading.html
+fonts/MaterialIcons-Regular.woff
+fonts/MaterialIcons-Regular.woff2
 
 NETWORK:
 *
 
-# hash: 22f744c7102e4eb0375d482c7bd34ac0d407159d34773e84e1f5087d0b6444d3
+# hash: 14f11bcd9129d9a8abf72747e50ece353e1b0b98fca95e897d096d612e793f08

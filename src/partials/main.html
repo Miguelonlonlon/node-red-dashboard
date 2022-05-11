@@ -1,5 +1,5 @@
 <md-toolbar ui-masonry id="toolbar">
-    <ui-card-panel node-id="{{group.header.id}}" ng-repeat="group in main[0].items" id="{{main.selectedTab.header+'_'+group.header.name | spaceToUnderscore}}"  ng-if="(group === 0)">
+    <ui-card-panel node-id="{{group.header.id}}" ng-repeat="group in main.menu[0].items" id="{{main.menu[0].header+'_'+group.header.name | spaceToUnderscore}}">
         <ui-component ng-repeat="control in group.items" item="control"></ui-component>
     </ui-card-panel>
 </md-toolbar>
@@ -14,7 +14,7 @@
     </md-sidenav>
     <md-content flex>
         <div ui-masonry ng-show="main.selectedTab.header" id="{{'Tab_'+main.selectedTab.header | spaceToUnderscore}}">
-            <ui-card-panel node-id="{{group.header.id}}" ng-repeat="group in main.selectedTab.items" id="{{main.selectedTab.header+'_'+group.header.name | spaceToUnderscore}}"  ng-if="group.header && group.header.config && !group.header.config.hidden">
+            <ui-card-panel node-id="{{group.header.id}}" ng-repeat="group in main.selectedTab.items" id="{{main.selectedTab.header+'_'+group.header.name | spaceToUnderscore}}"  ng-if="group.header && group.header.config && !group.header.config.hidden && (group.header.name != 'toolbar')">
                 <ui-component ng-repeat="control in group.items" item="control"></ui-component>
             </ui-card-panel>
         </div>
