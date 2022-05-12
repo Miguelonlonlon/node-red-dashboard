@@ -27,7 +27,7 @@
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="theme-color" content="#097479">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="manifest" href="manifest.json" crossorigin="use-credentials">
+    <link rel="manifest" href="/scripts/manifest.json" crossorigin="use-credentials">
     <link rel="icon" sizes="192x192" href="icon192x192.png">
     <link rel="shortcut icon" type="image/png" href="icon64x64.png">
     <link rel="apple-touch-icon" href="icon120x120.png">
@@ -70,6 +70,12 @@
     ng-swipe-left="onSwipeLeft();"
     ng-attr-ng-swipe-disable-mouse="{{main.allowSwipe !== 'mouse' ? '' : undefined}}"
     >
+<div id="titleBarContainer">
+    <div id="titleBar" class=" draggable">
+        <span class="draggable">Example PWA</span>
+        <input class="nonDraggable" type="text" placeholder="Search">
+    </div>
+</div>
 <md-content ng-if="main.loaded" ng-include="'partials/main.html'" layout="column" flex></md-content>
 <div ng-if="!main.loaded && !main.nothing" ng-include="'loading.html'" class="node-red-ui--loading"></div>
 <div ng-if="main.nothing" class="node-red-ui--notabs">
