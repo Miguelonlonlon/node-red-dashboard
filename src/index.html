@@ -71,19 +71,20 @@
     ng-attr-ng-swipe-disable-mouse="{{main.allowSwipe !== 'mouse' ? '' : undefined}}"
     >
 <div id="titleBarContainer">
-    <div id="titleBar" class=" draggable">
-        <span class="draggable">Example PWA</span>
-        <input class="nonDraggable" type="text" placeholder="Search">
+    <div id="titleBar" class="draggable">
+            <md-button class="atmAppMenuButton md-fab md-mini" aria-label="Menú" ng-click="main.toggleSidenav()">
+                <ng-md-icon icon="menu"></ng-md-icon>
+            </md-button>
     </div>
 </div>
 <md-content ng-if="main.loaded" ng-include="'partials/main.html'" layout="column" flex></md-content>
-<div ng-if="!main.loaded && !main.nothing" ng-include="'Data/html/loader-inc.html'" class="node-red-ui--loading"></div>
-<div ng-if="main.nothing" class="node-red-ui--notabs">
-    <table>
-        <tr><td><center><h2>Cargando...</h2></center></td></tr>
-        <tr><td><center><img src="/images/gest-atm.png"/></center></td></tr>
-        <tr><td><center><md-progress-circular md-mode="indeterminate"></md-progress-circular></center></td></tr>
-    </table>
+<div ng-if="(!main.loaded && !main.nothing) || main.nothing"  class="node-red-ui--loading">
+    <link  type="text/css" media="all" rel="stylesheet" href="/styles/loader.css">
+    <script async="" src="/scripts/gsap.min.js"></script>
+    <script async="" src="/scripts/loader.js"></script>
+    <div class="container">
+        <div class="circle-diagram" style="--percent: 100">Init</div>
+    </div>
 </div>
 <script src="socket.io/socket.io.js"></script>
 <!-- build:js -->
