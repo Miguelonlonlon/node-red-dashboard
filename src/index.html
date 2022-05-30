@@ -53,6 +53,7 @@
     <link rel="stylesheet" href="components/ui-component/templates/template.css">
     <link rel="stylesheet" href="components/ui-component/templates/form.css">
     <link rel="stylesheet" href="components/ui-card-panel/ui-card-panel.css">
+    <link data-ignore="true" rel="stylesheet" href="/styles/loader.css">
     <!-- endbuild -->
     <!-- build:less -->
     <link rel="stylesheet/less" href="main.less">
@@ -72,16 +73,18 @@
     >
 <div id="titleBarContainer">
     <div id="titleBar" class="draggable">
-            <md-button class="atmAppMenuButton md-fab md-mini" aria-label="Menú" ng-click="main.toggleSidenav()">
-                <ng-md-icon icon="menu"></ng-md-icon>
-            </md-button>
+        <md-button class="atmAppMenuButton md-fab md-mini" aria-label="Menú" ng-click="main.toggleSidenav()">
+            <ng-md-icon icon="menu"></ng-md-icon>
+        </md-button>
+        <div class="disabled" id="formledcontrol">
+            <md-tooltip md-direction="left" id="formledTooltip">Todo correcto</md-tooltip>
+            <div class="green" id="formled">
+            </div>
+        </div>
     </div>
 </div>
 <md-content ng-if="main.loaded" ng-include="'partials/main.html'" layout="column" flex></md-content>
 <div ng-if="(!main.loaded && !main.nothing) || main.nothing"  class="node-red-ui--loading">
-    <link  type="text/css" media="all" rel="stylesheet" href="/styles/loader.css">
-    <script async="" src="/scripts/gsap.min.js"></script>
-    <script async="" src="/scripts/loader.js"></script>
     <div class="container">
         <div class="circle-diagram" style="--percent: 100">Init</div>
     </div>
@@ -101,6 +104,8 @@
 <script src="vendor/sprintf-js/dist/angular-sprintf.min.js"></script>
 <script src="vendor/svg-morpheus/compile/unminified/svg-morpheus.js"></script>
 <script src="vendor/less/dist/less.min.js"></script>
+<script src="vendor/gsap/dist/gsap.min.js"></script>
+<script data-ignore="true" async="" src="/scripts/loader.js"></script>
 <!-- for new charts -->
 <script src="vendor/moment/min/moment-with-locales.min.js"></script>
 <script src="vendor/chart.js/dist/Chart.min.js"></script>

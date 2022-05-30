@@ -1,0 +1,55 @@
+<md-list id="atmSideNavMenu">
+    <md-list-item ng-click="main.open({link: 'http://localhost:1882/ui', target: 'thistab'}, 0)">
+        <ui-icon icon="home" style="margin:5px"></ui-icon>
+        <p style="margin-right:12px; min-width:120px;" ng-show="(main.lockMenu != 'icon')">Inicio</p>
+    </md-list-item>
+    <md-divider></md-divider>
+    <md-list-item style="padding: 0;">
+        <md-fab-speed-dial md-direction="down" md-open="main.pacisOpen" style="height: {{main.pacisOpen != true ? '48px' : 'auto'}}; width: 100%; align-items: flex-start;" class="md-scale">
+         <!--ng-mouseenter="main.pacisOpen=true" ng-mouseleave="main.pacisOpen=false"-->
+            <md-fab-trigger style="display:inline-flex; min-height: 100%; padding:0;" class="md-button md-no-style">
+                <md-button class="atmSideNavButton">
+                    <ui-icon icon="wc" style="margin:12px 5px 5px 5px"></ui-icon>
+                    <span style="margin-right:12px; min-width:120px;" ng-show="(main.lockMenu != 'icon')">Gestión de pacientes</span>
+                </md-button>
+            </md-fab-trigger>
+            <md-fab-actions style="width: 100%;">
+                <md-button class="atmSideNavSubButton" ng-click="main.open({link: 'http://localhost:1882/ui/#!/5', target: 'thistab'}, 5)"><ui-icon icon="fa-plus"></ui-icon>Nuevo paciente</md-button>
+                <md-button class="atmSideNavSubButton" ng-click="main.open({link: 'http://localhost:1882/ui/#!/1', target: 'thistab'}, 1)"><ui-icon icon="fa-search"></ui-icon>Buscar pacientes</md-button>
+                <md-button class="atmSideNavSubButton" ng-click="main.open({link: 'http://localhost:1882/ui/#!/7', target: 'thistab'}, 7)"><ui-icon icon="fa-list"></ui-icon>Listado de pacientes</md-button>
+            </md-fab-actions>
+        </md-fab-speed-dial>
+    </md-list-item>
+    <md-divider></md-divider>
+    <md-list-item style="padding: 0;">
+        <md-fab-speed-dial md-direction="down" md-open="main.diagisOpen" style="height: {{main.diagisOpen != true ? '48px' : 'auto'}}; width: 100%; align-items: flex-start;" class="md-scale">
+            <md-fab-trigger style="display:inline-flex; min-height: 100%; padding:0;" class="md-button md-no-style">
+                <md-button class="atmSideNavButton">
+                    <ui-icon icon="local_hospital" style="margin:12px 5px 5px 5px"></ui-icon>
+                    <span style="margin-right:12px; min-width:120px;" ng-show="(main.lockMenu != 'icon')">Diagnósticos</span>
+                </md-button>
+            </md-fab-trigger>
+            <md-fab-actions style="width: 100%;">
+                <md-button class="atmSideNavSubButton" ng-click="main.open({link: 'http://localhost:1882/ui/#!/2', target: 'thistab'}, 2)"><ui-icon icon="fa-plus"></ui-icon>Nuevo diagnóstico</md-button>
+                <md-button class="atmSideNavSubButton" ng-click="main.open({link: 'http://localhost:1882/ui/#!/8', target: 'thistab'}, 8)"><ui-icon icon="fa-search"></ui-icon>Buscar diagnóstico</md-button>
+                <md-button class="atmSideNavSubButton" ng-click="main.open({link: 'http://localhost:1882/ui/#!/9', target: 'thistab'}, 9)"><ui-icon icon="fa-list"></ui-icon>Listado de diagnósticos</md-button>
+            </md-fab-actions>
+        </md-fab-speed-dial>
+    </md-list-item>
+    <md-divider></md-divider>
+    <md-list-item ng-click="main.open({link: 'http://localhost:1882/ui/#!/3', target: 'thistab'}, 3)">
+        <ui-icon icon="build" style="margin:5px"></ui-icon>
+        <p style="margin-right:12px; min-width:120px;" ng-show="(main.lockMenu != 'icon')">Configuración</p>
+    </md-list-item>
+    <md-divider></md-divider>
+    <md-list-item onclick="window.electronAPI.showAbout()" class="atmSideNavFakeButton">
+        <ui-icon icon="info" style="margin:5px"></ui-icon>
+        <p style="margin-right:12px; min-width:120px;" ng-show="(main.lockMenu != 'icon')">Acerca de</p>
+    </md-list-item>
+    <md-divider></md-divider>
+    <md-list-item onclick="window.electronAPI.exitApp()" class="atmSideNavFakeButton">
+        <ui-icon icon="input" style="margin:5px"></ui-icon>
+        <p style="margin-right:12px; min-width:120px;" ng-show="(main.lockMenu != 'icon')">Salir</p>
+    </md-list-item>
+    <md-divider></md-divider>
+</md-list>

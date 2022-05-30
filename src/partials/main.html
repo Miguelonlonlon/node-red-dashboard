@@ -5,48 +5,7 @@
 </md-toolbar>
 <section layout="row" flex>
     <md-sidenav class="md-sidenav-left" md-component-id="left">
-        <md-list>
-            <md-list-item ng-click="main.open({link: 'http://localhost:1882/ui', target: 'thistab'}, 0)">
-                <ui-icon icon="home" style="margin:5px"></ui-icon>
-                <p style="margin-right:12px; min-width:120px;" ng-show="(main.lockMenu != 'icon')">Inicio</p>
-            </md-list-item>
-            <md-divider></md-divider>
-            <md-list-item>
-                <ui-icon icon="fa-group" style="margin:5px"></ui-icon>
-                <p style="margin-right:12px; min-width:120px;" ng-show="(main.lockMenu != 'icon')">Gestión de pacientes</p>
-                <md-menu class="md-secondary">
-                    <md-button class="md-icon-button">
-                      <md-icon md-svg-icon="communication:message"></md-icon>
-                    </md-button>
-                    <md-menu-content width="4">
-                          <md-menu-item><md-button ng-click="main.open({link: 'http://localhost:1882/ui/#!/5', target: 'thistab'}, 5)"><ng-md-icon icon="fa-plus"></ng-md-icon>Nuevo paciente</md-button></md-menu-item>
-                          <md-menu-item><md-button ng-click="main.open({link: 'http://localhost:1882/ui/#!/1', target: 'thistab'}, 1)"><ng-md-icon icon="fa-search"></ng-md-icon>Buscar paciente</md-button></md-menu-item>
-                          <md-menu-item><md-button ng-click="main.open({link: 'http://localhost:1882/ui/#!/7', target: 'thistab'}, 7)"><ng-md-icon icon="fa-list"></ng-md-icon>Listado de pacientes</md-button></md-menu-item>
-                    </md-menu-content>
-                </md-menu>
-            </md-list-item>
-            <md-divider></md-divider>
-            <md-list-item>
-                <ui-icon icon="fa-folder" style="margin:5px"></ui-icon>
-                <p style="margin-right:12px; min-width:120px;" ng-show="(main.lockMenu != 'icon')">Diagnósticos</p>
-                <md-menu class="md-secondary" md-offset="50 0">
-                    <md-button class="md-icon-button">
-                      <md-icon md-svg-icon="communication:message"></md-icon>
-                    </md-button>
-                    <md-menu-content width="4">
-                          <md-menu-item><md-button ng-click="main.open({link: 'http://localhost:1882/ui/#!/2', target: 'thistab'}, 2)"><ng-md-icon icon="fa-plus"></ng-md-icon>Nuevo diagnóstico</md-button></md-menu-item>
-                          <md-menu-item><md-button ng-click="main.open({link: 'http://localhost:1882/ui/#!/8', target: 'thistab'}, 8)"><ng-md-icon icon="fa-search"></ng-md-icon>Buscar diagnóstico</md-button></md-menu-item>
-                          <md-menu-item><md-button ng-click="main.open({link: 'http://localhost:1882/ui/#!/9', target: 'thistab'}, 9)"><ng-md-icon icon="fa-list"></ng-md-icon>Listado de diagnósticos</md-button></md-menu-item>
-                    </md-menu-content>
-                </md-menu>
-            </md-list-item>
-            <md-divider></md-divider>
-            <md-list-item ng-click="main.open({link: 'http://localhost:1882/ui/#!/3', target: 'thistab'}, 3)">
-                <ui-icon icon="fa-cog" style="margin:5px"></ui-icon>
-                <p style="margin-right:12px; min-width:120px;" ng-show="(main.lockMenu != 'icon')">Configuración</p>
-            </md-list-item>
-            <md-divider></md-divider>
-        </md-list>
+        <div ng-include="'partials/sidenav.html'"></div>
     </md-sidenav>
     <md-content flex>
         <div ui-masonry ng-show="main.selectedTab.header" id="{{'Tab_'+main.selectedTab.header | spaceToUnderscore}}">
@@ -61,4 +20,3 @@
     </md-content>
 </section>
 <div id="nr-dashboard-footer" layout="row"></div>
-

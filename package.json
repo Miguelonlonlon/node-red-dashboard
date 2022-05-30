@@ -106,6 +106,7 @@
         "chart.js": "~2.3.0",
         "d3": "^3.5.17",
         "font-awesome": "^4.7.0",
+        "gsap": "^3.10.4",
         "gulp": "~4.0.2",
         "gulp-angular-templatecache": "~3.0.0",
         "gulp-clean-css": "^4.3.0",
