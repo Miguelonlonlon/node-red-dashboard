@@ -32,6 +32,7 @@
     <link rel="shortcut icon" type="image/png" href="/images/icons/icon64x64.png">
     <link rel="apple-touch-icon" href="/images/icons/icon120x120.png">
     <!-- build:css -->
+    <link rel="stylesheet" href="vendor/jquery-ui-dist/jquery-ui.css">
     <link rel="stylesheet" href="vendor/angular-material/angular-material.min.css">
     <link rel="stylesheet" href="vendor/angular-material-icons/angular-material-icons.css">
     <link rel="stylesheet" href="vendor/font-awesome/css/font-awesome.css">
@@ -92,9 +93,9 @@
 <script src="socket.io/socket.io.js"></script>
 <!-- build:js -->
 <script src="vendor/jquery/dist/jquery.min.js"></script>
+<script src="vendor/jquery-ui-dist/jquery-ui.min.js"></script>
 <script src="vendor/angular/angular.min.js"></script>
 <script src="vendor/angular-sanitize/angular-sanitize.min.js"></script>
-<script src="vendor/angular-touch/angular-touch.min.js"></script>
 <script src="vendor/angular-animate/angular-animate.min.js"></script>
 <script src="vendor/angular-material/angular-material.min.js"></script>
 <script src="vendor/angular-aria/angular-aria.min.js"></script>
@@ -139,5 +140,11 @@
 <script src="filters/spaceToUnderscore.js"></script>
 <!-- endbuild -->
 <script src="i18n.js"></script>
+<script data-ignore="true">
+    function updAPP(e, v) {
+        if (e)
+            window.electronAPI.updateAPP(v);
+    }
+</script>
 </body>
 </html>

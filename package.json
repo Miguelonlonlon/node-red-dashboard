@@ -128,6 +128,7 @@
         "gulp-uglify": "~3.0.2",
         "gulp-util": "^3.0.8",
         "jquery": "^3.6.0",
+        "jquery-ui-dist": "^1.13.1",
         "jshint": "~2.13.3",
         "justgage": "~1.4.3",
         "less": "^3.13.1",

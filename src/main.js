@@ -36,7 +36,7 @@ document.addEventListener('visibilitychange', function() {
     setTimeout(function() { doVisualUpdates = !document.hidden; }, 1000);
 });
 
-var app = angular.module('ui',['ngMaterial', 'ngMdIcons', 'ngSanitize', 'ngTouch', 'sprintf', 'chart.js', 'color.picker']);
+var app = angular.module('ui',['ngMaterial', 'ngMdIcons', 'ngSanitize', 'sprintf', 'chart.js', 'color.picker']);
 
 var locale = (navigator.languages && navigator.languages.length) ? navigator.languages[0] : navigator.language;
 moment.locale(locale);

@@ -1,6 +1,6 @@
 <md-toolbar ui-masonry id="toolbar">
     <ui-card-panel node-id="{{group.header.id}}" ng-repeat="group in main.menu[0].items" id="{{main.menu[0].header+'_'+group.header.name | spaceToUnderscore}}">
-        <ui-component ng-repeat="control in group.items" item="control"></ui-component>
+        <ui-component ng-repeat="control in group.items" ng-if="(group.header.name === 'toolbar')" item="control"></ui-component>
     </ui-card-panel>
 </md-toolbar>
 <section layout="row" flex>
