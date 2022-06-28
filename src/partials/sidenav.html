@@ -1,5 +1,5 @@
 <md-list id="atmSideNavMenu">
-    <md-list-item ng-click="main.open({link: 'http://localhost:1882/ui', target: 'thistab'}, 0)">
+    <md-list-item onclick="window.electronAPI.loadURL(`http://localhost:1882/ui`);" class="atmSideNavFakeButton">
         <ui-icon icon="home" style="margin:5px"></ui-icon>
         <p style="margin-right:12px; min-width:120px;" ng-show="(main.lockMenu != 'icon')">Inicio</p>
     </md-list-item>
@@ -14,9 +14,9 @@
                 </md-button>
             </md-fab-trigger>
             <md-fab-actions style="width: 100%;">
-                <md-button class="atmSideNavSubButton" ng-click="main.open({link: 'http://localhost:1882/ui/#!/5', target: 'thistab'}, 5)"><ui-icon icon="fa-plus"></ui-icon>Nuevo paciente</md-button>
-                <md-button class="atmSideNavSubButton" ng-click="main.open({link: 'http://localhost:1882/ui/#!/1', target: 'thistab'}, 1)"><ui-icon icon="fa-search"></ui-icon>Buscar pacientes</md-button>
-                <md-button class="atmSideNavSubButton" ng-click="main.open({link: 'http://localhost:1882/ui/#!/7', target: 'thistab'}, 7)"><ui-icon icon="fa-list"></ui-icon>Listado de pacientes</md-button>
+                <md-button class="atmSideNavSubButton" onclick="window.electronAPI.loadURL(`http://localhost:1882/ui/#!/5`);"><ui-icon icon="fa-plus"></ui-icon>Nuevo paciente</md-button>
+                <md-button class="atmSideNavSubButton" onclick="window.electronAPI.loadURL(`http://localhost:1882/ui/#!/1`);"><ui-icon icon="fa-search"></ui-icon>Buscar pacientes</md-button>
+                <md-button class="atmSideNavSubButton" onclick="window.electronAPI.loadURL(`http://localhost:1882/ui/#!/7`);"><ui-icon icon="fa-list"></ui-icon>Listado de pacientes</md-button>
             </md-fab-actions>
         </md-fab-speed-dial>
     </md-list-item>
@@ -30,14 +30,14 @@
                 </md-button>
             </md-fab-trigger>
             <md-fab-actions style="width: 100%;">
-                <md-button class="atmSideNavSubButton" ng-click="main.open({link: 'http://localhost:1882/ui/#!/2', target: 'thistab'}, 2)"><ui-icon icon="fa-plus"></ui-icon>Nuevo diagnóstico</md-button>
-                <md-button class="atmSideNavSubButton" ng-click="main.open({link: 'http://localhost:1882/ui/#!/8', target: 'thistab'}, 8)"><ui-icon icon="fa-search"></ui-icon>Buscar diagnóstico</md-button>
-                <md-button class="atmSideNavSubButton" ng-click="main.open({link: 'http://localhost:1882/ui/#!/9', target: 'thistab'}, 9)"><ui-icon icon="fa-list"></ui-icon>Listado de diagnósticos</md-button>
+                <md-button class="atmSideNavSubButton" onclick="window.electronAPI.loadURL(`http://localhost:1882/ui/#!/2`);"><ui-icon icon="fa-plus"></ui-icon>Nuevo diagnóstico</md-button>
+                <md-button class="atmSideNavSubButton" onclick="window.electronAPI.loadURL(`http://localhost:1882/ui/#!/8`);"><ui-icon icon="fa-search"></ui-icon>Buscar diagnóstico</md-button>
+                <md-button class="atmSideNavSubButton" onclick="window.electronAPI.loadURL(`http://localhost:1882/ui/#!/9`);"><ui-icon icon="fa-list"></ui-icon>Listado de diagnósticos</md-button>
             </md-fab-actions>
         </md-fab-speed-dial>
     </md-list-item>
     <md-divider></md-divider>
-    <md-list-item ng-click="main.open({link: 'http://localhost:1882/ui/#!/3', target: 'thistab'}, 3)">
+    <md-list-item onclick="window.electronAPI.loadURL(`http://localhost:1882/ui/#!/3`);" class="atmSideNavFakeButton">
         <ui-icon icon="build" style="margin:5px"></ui-icon>
         <p style="margin-right:12px; min-width:120px;" ng-show="(main.lockMenu != 'icon')">Configuración</p>
     </md-list-item>
