@@ -91,6 +91,7 @@
         "socket.io": "^4.4.1"
     },
     "devDependencies": {
+        "@Miguelonlonlon/vanilla-calendar": "github:Miguelonlonlon/vanilla-calendar#dist",
         "angular": "~1.8.2",
         "angular-animate": "~1.8.2",
         "angular-aria": "~1.8.2",
