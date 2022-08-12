@@ -1,19 +1,14 @@
-<md-toolbar ui-masonry id="toolbar">
-    <ui-card-panel node-id="{{group.header.id}}" ng-repeat="group in main.menu[0].items" id="{{main.menu[0].header+'_'+group.header.name | spaceToUnderscore}}">
-        <ui-component ng-repeat="control in group.items" ng-if="(group.header.name === 'toolbar')" item="control"></ui-component>
-    </ui-card-panel>
-</md-toolbar>
 <section layout="row" flex>
     <md-sidenav class="md-sidenav-left" md-component-id="left">
         <div ng-include="'partials/sidenav.html'"></div>
     </md-sidenav>
     <md-content flex>
-        <div ui-masonry ng-show="main.selectedTab.header" id="{{'Tab_'+main.selectedTab.header | spaceToUnderscore}}">
-            <ui-card-panel node-id="{{group.header.id}}" ng-repeat="group in main.selectedTab.items" id="{{main.selectedTab.header+'_'+group.header.name | spaceToUnderscore}}"  ng-if="group.header && group.header.config && !group.header.config.hidden && (group.header.name != 'toolbar')">
+        <div ui-masonry ng-if="main.selectedTab !== main.menu[0]" ng-show="main.selectedTab.header" id="{{'Tab_'+main.selectedTab.header | spaceToUnderscore}}">
+            <ui-card-panel node-id="{{group.header.id}}" ng-repeat="group in main.selectedTab.items" id="{{main.selectedTab.header+'_'+group.header.name | spaceToUnderscore}}"  ng-if="group.header && group.header.config && !group.header.config.hidden">
                 <ui-component ng-repeat="control in group.items" item="control"></ui-component>
             </ui-card-panel>
         </div>
-    	<div class="node-red-ui--inline-link" ng-show="!main.selectedTab.header">
+    	<div ng-if="main.selectedTab !== main.menu[0]" class="node-red-ui--inline-link" ng-show="!main.selectedTab.header">
     		<iframe class="iframe" ng-src="{{ main.selectedTab.link }}" allowfullscreen></iframe>
     		<!-- <div>The url {{ }} cannot be loaded into an iframe.</div> -->
     	</div>

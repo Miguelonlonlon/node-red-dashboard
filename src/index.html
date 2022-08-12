@@ -73,19 +73,19 @@
     ng-swipe-left="onSwipeLeft();"
     ng-attr-ng-swipe-disable-mouse="{{main.allowSwipe !== 'mouse' ? '' : undefined}}"
     >
-<div id="titleBarContainer">
-    <div id="titleBar" class="draggable">
+<div id="titleBarContainer" ng-cloak>
+    <div id="titleBar">
         <md-button class="atmAppMenuButton md-fab md-mini" aria-label="Menú" ng-click="main.toggleSidenav()">
             <ng-md-icon icon="menu"></ng-md-icon>
         </md-button>
-        <div class="disabled" id="formledcontrol">
-            <md-tooltip md-direction="left" id="formledTooltip">Todo correcto</md-tooltip>
-            <div class="green" id="formled">
-            </div>
-        </div>
+        <md-toolbar id="top_toolBar">
+            <ui-card-panel node-id="{{group.header.id}}" ng-repeat="group in main.menu[0].items" id="{{main.menu[0].header+'_'+group.header.name | spaceToUnderscore}}">
+                <ui-component ng-repeat="control in group.items" item="control"></ui-component>
+            </ui-card-panel>
+        </md-toolbar>
     </div>
 </div>
-<md-content ng-if="main.loaded" ng-include="'partials/main.html'" layout="column" flex></md-content>
+<md-content id="mainContent" ng-if="main.loaded" ng-include="'partials/main.html'" layout="column" flex></md-content>
 <!--div ng-if="(!main.loaded && !main.nothing) || main.nothing"  class="node-red-ui--loading">
     <div class="container">
         <div class="circle-diagram" style="--percent: 100">Init</div>
@@ -142,11 +142,5 @@
 <script src="filters/spaceToUnderscore.js"></script>
 <!-- endbuild -->
 <script src="i18n.js"></script>
-<script data-ignore="true">
-    function updAPP(e, v) {
-        if (e)
-            window.electronAPI.updateAPP(v);
-    }
-</script>
 </body>
 </html>
