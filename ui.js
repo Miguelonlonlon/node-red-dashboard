@@ -1,7 +1,9 @@
 
 var inited = false;
+var nodes = {}; // UI-MODULE PROTO
 
 module.exports = function(RED) {
+    nodes = RED.nodes;  // UI-MODULE PROTO
     if (!inited) {
         inited = true;
         init(RED.server, RED.httpNode || RED.httpAdmin, RED.log, RED.settings);
@@ -44,6 +46,8 @@ var removeStateTimeout = 1000;
 var ev = new events.EventEmitter();
 var params = {};
 ev.setMaxListeners(0);
+
+var displayed_subgroup = []; // UI-MODULE PROTO
 
 // default manifest.json to be returned as required.
 var mani = {
@@ -123,6 +127,112 @@ options:
         if the returned msg has a property _dontSend, then it won't get sent.
 */
 function add(opt) {
+
+    // UI-MODULE PROTO
+    //console.log("\n#",opt.node.type,"/",opt.control.label,"/",opt.node.id,"/",opt.node["_alias"]);
+    var isSubgroup = false;
+    if (opt.node["_alias"]) {
+        isSubgroup = true;
+
+        var subflow = nodes.getNode(opt.node.z);
+        if (subflow) {
+            var widget = opt.node["_alias"];
+            console.log("# Widget:", widget, opt.node.type);
+            console.log("  Belongs to Subflow instalce :", subflow.path);
+
+            var subflows = subflow.path.split('/');
+
+            // Get orders for all layers by repeating for each layer
+            var sf_inst_id = subflows.pop(); // Get the trailing subflow instance
+            while (sf_inst_id) {
+                var order = -1;
+                if (subflows.length > 0) {
+                    sg_inst = getSubgroupInstance(sf_inst_id); // Get a subgroup instance
+                    order = getOrderBySubgroup(sg_inst, widget); // Get order value for subgroup
+                    console.log("  subflow instance=",sf_inst_id);
+                    console.log("  widget or subgroup instance=", widget);
+                    console.log("  order=", order);
+                } else {
+                    console.log("  subgroup instance=", widget);
+                    console.log("  order=", sg_inst.order);
+                }
+                widget = sg_inst.id; // Get the order value of the obtained subgroup instance
+                sf_inst_id = subflows.pop();
+            }
+        } else {
+            // TODO Cannot get subflow instance when subflow instance is placed in subflow.
+            console.log("  The subflow instance was not found.");
+        }
+    }
+
+    if (isSubgroup) {
+        //console.log("# SUBGROUP:", displayed_subgroup);
+        if (displayed_subgroup.indexOf(opt.node.z) != -1) {
+            //console.log("# ALREDY DISPLAY: subflow iinstance:", opt.node.z);
+            return;
+        }
+
+        var sg_height = 1;
+        var sg_width = 1;
+        var sg_order = 0;
+        var sg_group_id = null;
+
+        nodes.eachNode(function(node) {
+            if (node.type == 'ui_subgroup_i') {
+                if (node.subflow == opt.node.z) {
+                    sg_group_id = node.group;
+                    sg_order = node.order;
+                }
+            }
+        });
+
+        if (!sg_group_id) {
+            //console.log("# SUBGROUP-INSTANCE NOT FOUND:", opt.node.z);
+            return;
+        }
+
+        nodes.eachNode(function(node) {
+            if (node.type == 'ui_subgroup_t') {
+                var idx = node.widgetOrder.indexOf(opt.node["_alias"]);
+                if (idx != -1) {
+                    sg_height = node.height;
+                    sg_width = node.width;
+                }
+            };
+        });
+
+        var sg_group = nodes.getNode(sg_group_id);
+        if (!sg_group) {
+            //console.log("# GROUP NOT FOUND:", sg_group_id);
+            return;
+        }
+
+        var sg_tab = nodes.getNode(sg_group.config.tab);
+        if (!sg_tab) {
+            //console.log("# TAB NOT FOUND:", sg_tab);
+            return;
+        }
+
+        var sg_control = {
+            type: 'spacer',
+            order: sg_order,
+            width: sg_width,
+            height: sg_height
+        };
+
+        //console.log("# ADD SPACER FOR SUBGROUP");
+        var remove_sg = addControl(sg_tab, sg_group, sg_control);
+        displayed_subgroup.push(opt.node.z);
+
+        ev.on(updateValueEventName, function() {});
+        return function() {
+            ev.removeListener(updateValueEventName, function() {});
+            remove_sg();
+            displayed_subgroup = [];
+        };
+    }
+    // UI-MODULE PROTO
+
     clearTimeout(removeStateTimers[opt.node.id]);
     delete removeStateTimers[opt.node.id];
 
@@ -313,6 +423,27 @@ function add(opt) {
     };
 }
 
+// Get subgroup instance definition from subflow instance ID
+function getSubgroupInstance(sf_inst_id) {
+    var sg_inst = null;
+    nodes.eachNode(function(node) {
+        if (node.type == 'ui_subgroup_i' && node.subflow == sf_inst_id) {
+            sg_inst = node;
+        }
+    });
+    return sg_inst;
+}
+
+// Get order value from subgroup instance definition
+function getOrderBySubgroup(sg_inst, widget) {
+    var order = -1;
+    nodes.eachNode(function(node) {
+        if (node.type == 'ui_subgroup_t' && node.id == sg_inst.subgroup) {
+            order = node.widgetOrder.indexOf(widget);
+        }
+    });
+    return order;
+}
 //from: https://stackoverflow.com/a/28592528/3016654
 function join() {
     var trimRegex = new RegExp('^\\/|\\/$','g');
