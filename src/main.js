@@ -139,6 +139,8 @@ app.controller('MainController', ['$mdSidenav', '$window', 'UiEvents', '$locatio
         });
 
         this.toggleSidenav = function () { $mdSidenav('left').toggle(); }
+        this.openSidenav = function () { $mdSidenav('left').open(); }
+        this.closeSidenav = function () { $mdSidenav('left').close(); }
 
         this.select = function (index) {
             main.selectedTab = main.menu[index];
